@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_ingreso/pages/users_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Prueba Ingreso',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          
+          primarySwatch: Colors.green,
         ),
-        home: const HomePage());
+        home: const UsersListPage());
   }
 }
 
