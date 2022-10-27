@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:prueba_ingreso/main.dart';
-import 'package:prueba_ingreso/models/user.dart';
+import 'package:prueba_ingreso/data/entities/user.dart';
 import 'package:prueba_ingreso/providers/users_provider.dart';
 
 void main() {
