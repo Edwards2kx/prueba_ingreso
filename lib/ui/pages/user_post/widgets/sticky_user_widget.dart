@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../data/entities/user.dart';
+import '../../../../domain/entities/user.dart';
 
 class StickyUserContainer extends StatelessWidget {
   final User user;

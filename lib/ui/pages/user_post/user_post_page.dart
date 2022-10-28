@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prueba_ingreso/providers/post_providers.dart';
+import 'package:prueba_ingreso/data/repositories/post_providers.dart';
 import 'package:prueba_ingreso/ui/pages/user_post/widgets/post_card_widget.dart';
 import 'package:prueba_ingreso/ui/pages/user_post/widgets/sticky_user_widget.dart';
 import 'package:prueba_ingreso/ui/widgets/custom_appbar.dart';
 import 'package:prueba_ingreso/ui/widgets/refresh_button.dart';
-import '../../../data/entities/post.dart';
-import '../../../data/entities/user.dart';
+import '../../../domain/entities/post.dart';
+import '../../../domain/entities/user.dart';
 
 class PostsPage extends StatefulWidget {
   final User user;

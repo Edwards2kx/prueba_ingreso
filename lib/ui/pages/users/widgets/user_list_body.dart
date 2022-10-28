@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prueba_ingreso/ui/pages/users/widgets/user_card_widget.dart';
 import 'package:prueba_ingreso/ui/widgets/refresh_button.dart';
-import '../../../../data/entities/user.dart';
-import '../../../../providers/users_provider.dart';
+import '../../../../domain/entities/user.dart';
+import '../../../../data/repositories/users_provider.dart';
 
 class UserListBody extends StatefulWidget {
   final List<User> usersList;

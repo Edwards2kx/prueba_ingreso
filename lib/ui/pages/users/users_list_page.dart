@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prueba_ingreso/providers/users_provider.dart';
+import 'package:prueba_ingreso/data/repositories/users_provider.dart';
 import 'package:prueba_ingreso/ui/pages/users/widgets/user_list_body.dart';
-import '../../../data/entities/user.dart';
+import '../../../domain/entities/user.dart';
 import '../../widgets/custom_appbar.dart';
 
 class UsersListPage extends StatelessWidget {
@@ -13,13 +13,10 @@ class UsersListPage extends StatelessWidget {
     final usersProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       appBar: customAppBar,
-      //TODO: remover esto
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.delete),
-        onPressed: () async {
-          usersProvider.deleteUsers();
-        },
-      ),
+      //para propositos de limpiar la base de datos en pruebas
+      // floatingActionButton: FloatingActionButton(
+      //     child: const Icon(Icons.delete),
+      //     onPressed: () async => usersProvider.deleteUsers()),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(8, 6, 8, 0),
         child: FutureBuilder(

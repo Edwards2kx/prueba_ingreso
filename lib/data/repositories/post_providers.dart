@@ -1,14 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:prueba_ingreso/data/entities/post.dart';
-import 'package:prueba_ingreso/providers/abstract_getposts.dart';
 import 'package:http/http.dart' as http;
-import 'package:prueba_ingreso/providers/database_config.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:prueba_ingreso/data/services/database_service.dart';
+import 'package:prueba_ingreso/domain/entities/post.dart';
+import 'package:prueba_ingreso/domain/repositories/abstract_getposts.dart';
 
 class PostProvider with ChangeNotifier implements AbstractPost {
-
-  Future<List<Post>> _getPostsByUserFromServer(int id) async {
+  Future<List<Post>> getPostsByUserFromServer(int id) async {
     final String url = 'https://jsonplaceholder.typicode.com/posts?userId=$id';
     try {
       final response = await http.get(Uri.parse(url));
@@ -29,32 +27,20 @@ class PostProvider with ChangeNotifier implements AbstractPost {
   }
 
   Future<List<Post>> _getPostsByUserFromLocal(int id) async {
-    List<Post> listPosts = [];
-    Database db = await LocalDataBase.instance.database;
-    final List<Map<String, dynamic>> mapPosts =
-        await db.query('posts', where: 'userId = ?', whereArgs: [id]);
-    for (Map<String, dynamic> mapPost in mapPosts) {
-      listPosts.add(Post.fromMap(mapPost));
-    }
-    return listPosts;
+    return DataBaseService.getPosts(id);
   }
 
   Future<void> _insertPosts(List<Post> posts) async {
-    final db = await LocalDataBase.instance.database;
-    for (Post post in posts) {
-      await db.insert('posts', post.toMap(),
-          conflictAlgorithm: ConflictAlgorithm.replace);
-    }
+    DataBaseService.saveDataBase('posts', posts);
   }
 
   @override
   Future<List<Post>> getPostsByUser(int id) async {
     var data = await _getPostsByUserFromLocal(id);
     if (data.isNotEmpty) {
-      print('se usan datos locales del post');
       return data;
     } else {
-      return await _getPostsByUserFromServer(id);
+      return await getPostsByUserFromServer(id);
     }
   }
 }

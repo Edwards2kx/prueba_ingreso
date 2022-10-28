@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:prueba_ingreso/data/entities/user.dart';
-import 'package:prueba_ingreso/providers/users_provider.dart';
+import 'package:prueba_ingreso/domain/entities/user.dart';
+import 'package:prueba_ingreso/data/repositories/users_provider.dart';
 
 void main() {
   String usersGetResponse = ''' 
@@ -35,6 +35,5 @@ void main() {
     expect(usersList[0].name, 'Leanne Graham');
     expect(usersList[0].company?.name, 'Romaguera-Crona');
     expect(usersList[0].address?.geo, {"lat": "-37.3159", "lng": "81.1496"});
-    // expect(usersList[0].name, 'Leanne Graham');
   });
 }
