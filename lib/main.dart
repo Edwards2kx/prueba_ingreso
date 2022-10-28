@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:prueba_ingreso/providers/post_providers.dart';
 import 'package:prueba_ingreso/providers/users_provider.dart';
 import 'package:prueba_ingreso/ui/pages/users/users_list_page.dart';
 
-import 'package:provider/provider.dart';
-
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }

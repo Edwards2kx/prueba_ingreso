@@ -14,8 +14,6 @@ class Address {
         this.geo,
     });
 
-//Address.personal ( Map<String, dynamic> jsonn
-
     factory Address.fromJson(Map<String, dynamic> json) => Address(
         street: json["street"],
         suite: json["suite"],
@@ -24,4 +22,32 @@ class Address {
         geo : json["geo"]
         //geo: Geo.fromJson(json["geo"]),
     );
+
+    factory Address.fromMap(Map<String, dynamic> json) => Address(
+        street: json["street"],
+        suite: json["suite"],
+        city: json["city"],
+        zipcode: json["zipcode"],
+        geo: {
+          //'lat':
+        },
+  //      geo: Geo.fromMap(json["geo"]),
+    );
+
+
+
+
+
+
+    Map<String, dynamic> toMap() => {
+        "street": street,
+        "suite": suite,
+        "city": city,
+        "zipcode": zipcode,
+        "geo": geo.toString(),
+   //     "geo": "{'lat': }"
+        //   "geo": geo.toMap(),
+        //TODO:revisar Geo como to Map
+    };
+
 }

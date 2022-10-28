@@ -9,4 +9,20 @@ class Company {
       : name = json["name"],
         catchPhrase = json['catchPhrase'],
         bs = json['bs'];
+
+
+ factory Company.fromMap(Map<String, dynamic> json) => Company(
+        name: json["name"],
+        catchPhrase: json["catchPhrase"],
+        bs: json["bs"],
+    );
+
+
+   Map<String, dynamic> toMap() => {
+        "name": name,
+        "catchPhrase": catchPhrase,
+        "bs": bs,
+    };
+
+
 }
